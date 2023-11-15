@@ -3,21 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <title>FINLEY NOLAN</title>
-  <meta name="FINNS OWN SITE" content="FINLEY UWU">
+  <meta name="description" content="FINLEY UWU">
 </head>
 <body>
 
-  <h1>FINLEY NOLAN!! HE HAS A WEEBSITE</h1>
+  <h1>FINLEY NOLAN!! HE HAS A WEBSITE</h1>
   
   <!-- Replace 'image.png' with the actual path to your image -->
-  <img src="image.jpg" alt="FINN">
+  <img src="image.jpg" alt="FINN" id="playMusic">
 
   <!-- Replace 'audio.mp3' with the actual path to your audio file -->
-  <audio controls autoplay>
-        <source src="audio.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
+  <audio id="backgroundMusic">
+    <source src="audio.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
   </audio>
-    
+
+  <script>
+    // Get the image element by its ID
+    const image = document.getElementById('playMusic');
+    // Get the audio element by its ID
+    const audio = document.getElementById('backgroundMusic');
+
+    // Add a click event listener to the image
+    image.addEventListener('click', function() {
+      // Check if the audio is paused or ended
+      if (audio.paused || audio.ended) {
+        // Play the audio
+        audio.play();
+      } else {
+        // Pause the audio
+        audio.pause();
+      }
+    });
+  </script>
 
 </body>
 </html>
