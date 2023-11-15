@@ -4,13 +4,21 @@
   <meta charset="UTF-8">
   <title>FINLEY NOLAN</title>
   <meta name="description" content="FINLEY UWU">
+  <!-- Link the external CSS file -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
   <h1>FINLEY NOLAN!! HE HAS A WEBSITE</h1>
   
-  <!-- Replace 'image.png' with the actual path to your image -->
-  <img src="image.jpg" alt="FINN" id="playMusic">
+  <!-- Replace 'image.jpg' with the actual path to your other image -->
+  <img src="image.jpg" alt="Other Image" id="playMusic">
+
+  <!-- Replace 'image.png' with the actual path to your bouncing image -->
+  <img src="image2.png" alt="Bouncing Image" class="bouncing-image">
+
+  <!-- Date and time overlay -->
+  <div class="date-time" id="date-time"></div>
 
   <!-- Replace 'audio1.mp3' and 'audio2.mp3' with the actual paths to your audio files -->
   <audio autoplay loop id="backgroundMusic">
@@ -19,7 +27,7 @@
   </audio>
 
   <script>
-    const image = document.getElementById('playMusic');
+    // Get the audio element by its ID
     const audio = document.getElementById('backgroundMusic');
 
     // Array containing paths to your audio files
@@ -31,19 +39,23 @@
       return audioFiles[randomIndex];
     }
 
-    // Add a click event listener to the image
-    image.addEventListener('click', function() {
-      // Check if the audio is paused or ended
-      if (audio.paused || audio.ended) {
-        // Get a random audio file
-        const randomAudio = getRandomAudio();
-        // Set the source of the audio element to the random audio file
-        audio.src = randomAudio;
-        // Load and play the new audio file
-        audio.load();
-        audio.play();
-      }
+    // Play a random audio file when the current one ends
+    audio.addEventListener('ended', function() {
+      const randomAudio = getRandomAudio();
+      audio.src = randomAudio;
+      audio.load();
+      audio.play();
     });
+
+    // Display date and time
+    function displayDateTime() {
+      const now = new Date();
+      const dateTime = now.toLocaleString('en-UK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+      document.getElementById('date-time').textContent = dateTime;
+    }
+
+    // Update date and time every second
+    setInterval(displayDateTime, 1000);
 
     // Disable the context menu on right-click (to prevent pausing on some browsers)
     document.addEventListener('contextmenu', function(e) {
