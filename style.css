@@ -1,5 +1,16 @@
-/* Style for the bouncing image */
-.bouncing-image {
+/* Resetting default margin and padding for the body */
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container styles */
+  .container {
+    position: relative;
+  }
+  
+  /* Style for the bouncing image */
+  .bouncing-image {
     position: absolute;
     animation: bounce 5s infinite;
   }
