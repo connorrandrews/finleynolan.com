@@ -12,28 +12,42 @@ body {
   overflow: hidden; /* Hide overflowing content */
 }
 
+/* Resetting default margin and padding for the body */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Container styles */
+.container {
+  position: relative;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflowing content */
+}
+
 /* Style for the bouncing image */
 .bouncing-image {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(0.4); /* Adjust the initial scale value */
   animation: bounce 5s infinite;
   transform-origin: center center;
 }
 
 @keyframes bounce {
-  0%, 100% {
-    transform: translate(-50%, -50%) scale(0.4);
+  0% {
+    transform: translate(-50%, -50%) scale(0.4); /* Adjust the initial position and scale */
   }
   25% {
-    transform: translate(-25%, -25%) scale(0.4);
+    transform: translate(calc(-50% + 20vw), -50%) scale(0.4); /* Adjust horizontal distance */
   }
   50% {
-    transform: translate(25%, 25%) scale(0.4);
+    transform: translate(-50%, -50%) scale(0.4); /* Return to the original position */
   }
   75% {
-    transform: translate(50%, 50%) scale(0.4);
+    transform: translate(calc(-50% - 20vw), -50%) scale(0.4); /* Adjust horizontal distance */
   }
 }
 
