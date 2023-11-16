@@ -12,20 +12,6 @@ body {
   overflow: hidden; /* Hide overflowing content */
 }
 
-/* Resetting default margin and padding for the body */
-body {
-  margin: 0;
-  padding: 0;
-}
-
-/* Container styles */
-.container {
-  position: relative;
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  overflow: hidden; /* Hide overflowing content */
-}
-
 /* Style for the bouncing image */
 .bouncing-image {
   position: absolute;
@@ -41,13 +27,16 @@ body {
     transform: translate(-50%, -50%) scale(0.4); /* Adjust the initial position and scale */
   }
   25% {
-    transform: translate(calc(-50% + 20vw), -50%) scale(0.4); /* Adjust horizontal distance */
+    transform: translate(calc(-50% + 20vw), -50%) scale(0.4); /* Move right */
   }
   50% {
-    transform: translate(-50%, -50%) scale(0.4); /* Return to the original position */
+    transform: translate(calc(-50% + 20vw), calc(-50% + 20vh)) scale(0.4); /* Move down */
   }
   75% {
-    transform: translate(calc(-50% - 20vw), -50%) scale(0.4); /* Adjust horizontal distance */
+    transform: translate(-50%, calc(-50% + 20vh)) scale(0.4); /* Move left */
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.4); /* Move up */
   }
 }
 
