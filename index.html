@@ -9,13 +9,15 @@
 </head>
 <body>
 
-  <h1>FINLEY NOLAN!! HE HAS A WEBSITE</h1>
-  
-  <!-- Replace 'image.jpg' with the actual path to your other image -->
-  <img src="image.jpg" alt="Other Image" id="playMusic">
+  <div class="container">
+    <h1>FINLEY NOLAN!! HE HAS A WEBSITE</h1>
+    
+    <!-- Replace 'image.jpg' with the actual path to your other image -->
+    <img src="image.jpg" alt="Other Image" id="playMusic">
 
-  <!-- Replace 'image.png' with the actual path to your bouncing image -->
-  <img src="image2.png" alt="Bouncing Image" class="bouncing-image">
+    <!-- Replace 'image2.png' with the actual path to your bouncing image -->
+    <img src="image2.png" alt="Bouncing Image" class="bouncing-image">
+  </div>
 
   <!-- Date and time overlay -->
   <div class="date-time" id="date-time"></div>
@@ -44,6 +46,12 @@
       const randomAudio = getRandomAudio();
       audio.src = randomAudio;
       audio.load();
+      audio.play();
+    });
+
+    // Play audio when the image is clicked
+    const playMusicImage = document.getElementById('playMusic');
+    playMusicImage.addEventListener('click', function() {
       audio.play();
     });
 
