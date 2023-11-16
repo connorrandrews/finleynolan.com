@@ -6,8 +6,8 @@
   <meta name="description" content="FINLEY UWU">
   
   <!-- Meta tags for Discord -->
-  <meta property="og:title" content="FINLEY NOLAN UWU">
-  <meta property="og:description" content="FINLEY LOVES CHRISTMAS">
+  <meta property="og:title" content="FINLEY NOLAN">
+  <meta property="og:description" content="FINLEY UWU">
   <meta property="og:image" content="https://finleynolan.com/image2.png"> <!-- Replace with your image URL -->
   <meta property="og:url" content="https://finleynolan.com">
   <meta name="twitter:card" content="finn loves christmas">
@@ -43,6 +43,12 @@
       padding: 5px;
       border-radius: 5px;
     }
+
+    /* Countdown timer styles */
+    .countdown {
+      font-size: 24px;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -52,6 +58,9 @@
     
     <!-- Replace 'image2.png' with the actual path to your image -->
     <img src="image2.png" alt="Other Image" id="playMusic">
+    
+    <!-- Countdown timer -->
+    <div class="countdown" id="countdown"></div>
   </div>
 
   <!-- Date and time overlay -->
@@ -97,6 +106,27 @@
     playMusicImage.addEventListener('click', function() {
       audio.play();
     });
+
+    // Function to calculate Christmas countdown
+    function christmasCountdown() {
+      const now = new Date();
+      const christmasDate = new Date(now.getFullYear(), 11, 25); // December month is 11 (0-indexed)
+      
+      // Calculate time difference in milliseconds
+      const timeDiff = christmasDate - now;
+
+      // Convert milliseconds to days, hours, minutes, seconds
+      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+      // Display countdown
+      document.getElementById("countdown").innerHTML = `Christmas Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Update countdown every second
+    setInterval(christmasCountdown, 1000);
 
     // Display date and time
     function displayDateTime() {
