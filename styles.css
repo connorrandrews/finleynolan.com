@@ -2,11 +2,15 @@
 body {
   margin: 0;
   padding: 0;
+  overflow: hidden; /* Prevent scrolling */
 }
 
 /* Container styles */
 .container {
   position: relative;
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  overflow: hidden; /* Hide overflowing content */
 }
 
 /* Style for the bouncing image */
