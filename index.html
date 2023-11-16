@@ -30,6 +30,14 @@
     /* Scale for image2.png */
     #playMusic {
       width: 50%; /* Adjust the scale as needed */
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Countdown timer styles */
+    .countdown {
+      font-size: 18px;
+      margin-top: 20px;
     }
 
     /* Date and time overlay */
@@ -37,17 +45,11 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      font-size: 18px;
+      font-size: 14px;
       color: black; /* Adjust color as needed */
       background-color: rgba(255, 255, 255, 0.8); /* Background color with some transparency */
       padding: 5px;
       border-radius: 5px;
-    }
-
-    /* Countdown timer styles */
-    .countdown {
-      font-size: 24px;
-      margin-top: 20px;
     }
   </style>
 </head>
@@ -99,12 +101,6 @@
     // Play a random audio file when the current one ends
     audio.addEventListener('ended', function() {
       playRandomAudio();
-    });
-
-    // Play audio when the image is clicked
-    const playMusicImage = document.getElementById('playMusic');
-    playMusicImage.addEventListener('click', function() {
-      audio.play();
     });
 
     // Function to calculate Christmas countdown
