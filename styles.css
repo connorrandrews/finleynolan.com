@@ -16,23 +16,24 @@ body {
 /* Style for the bouncing image */
 .bouncing-image {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   animation: bounce 5s infinite;
+  transform-origin: center center;
 }
 
 @keyframes bounce {
   0%, 100% {
-    transform: translate(0, 0);
+    transform: translate(-50%, -50%) scale(1);
   }
   25% {
-    transform: translate(80vw, 70vh);
+    transform: translate(20vw, -20vh) scale(1);
   }
   50% {
-    transform: translate(50vw, 30vh);
+    transform: translate(-20vw, 20vh) scale(1);
   }
   75% {
-    transform: translate(20vw, 50vh);
+    transform: translate(20vw, 40vh) scale(1);
   }
 }
 
