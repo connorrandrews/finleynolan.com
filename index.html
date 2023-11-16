@@ -27,9 +27,19 @@
       text-align: center;
     }
 
-    /* Scale for image2.png */
+    /* Rotate animation for image2.png */
     #playMusic {
       width: 50%; /* Adjust the scale as needed */
+      animation: spin 5s linear infinite; /* Define the spin animation */
+    }
+
+    @keyframes spin {
+      from {
+        transform: rotate(0deg); /* Start rotation from 0 degrees */
+      }
+      to {
+        transform: rotate(360deg); /* Rotate to 360 degrees */
+      }
     }
 
     /* Date and time overlay */
