@@ -13,7 +13,7 @@
     <h1>FINLEY NOLAN!! HE HAS A WEBSITE</h1>
     
     <!-- Replace 'image.jpg' with the actual path to your other image -->
-    <img src="image2.png" alt="Other Image" id="playMusic">
+    <img src="image.jpg" alt="Other Image" id="playMusic">
   </div>
 
   <!-- Date and time overlay -->
@@ -38,12 +38,20 @@
       return audioFiles[randomIndex];
     }
 
-    // Play a random audio file when the current one ends
-    audio.addEventListener('ended', function() {
+    // Function to play audio
+    function playRandomAudio() {
       const randomAudio = getRandomAudio();
       audio.src = randomAudio;
       audio.load();
       audio.play();
+    }
+
+    // Play a random audio file initially
+    playRandomAudio();
+
+    // Play a random audio file when the current one ends
+    audio.addEventListener('ended', function() {
+      playRandomAudio();
     });
 
     // Play audio when the image is clicked
