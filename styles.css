@@ -2,6 +2,10 @@
 body {
   margin: 0;
   padding: 0;
+  background-image: url("images/giphy.gif");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: 25%;
 }
 
 /* Container styles */
