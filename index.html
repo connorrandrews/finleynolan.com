@@ -6,8 +6,8 @@
   <meta name="description" content="FINLEY UWU">
   
   <!-- Meta tags for Discord -->
-  <meta property="og:title" content="FINLEY NOLAN">
-  <meta property="og:description" content="FINLEY UWU">
+  <meta property="og:title" content="FINLEY NOLAN UWU">
+  <meta property="og:description" content="FINLEY LOVES CHRISTMAS">
   <meta property="og:image" content="https://finleynolan.com/image2.png"> <!-- Replace with your image URL -->
   <meta property="og:url" content="https://finleynolan.com">
   <meta name="twitter:card" content="finn loves christmas">
@@ -30,14 +30,6 @@
     /* Scale for image2.png */
     #playMusic {
       width: 50%; /* Adjust the scale as needed */
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* Countdown timer styles */
-    .countdown {
-      font-size: 18px;
-      margin-top: 20px;
     }
 
     /* Date and time overlay */
@@ -45,7 +37,7 @@
       position: fixed;
       top: 10px;
       right: 10px;
-      font-size: 14px;
+      font-size: 18px;
       color: black; /* Adjust color as needed */
       background-color: rgba(255, 255, 255, 0.8); /* Background color with some transparency */
       padding: 5px;
@@ -60,9 +52,6 @@
     
     <!-- Replace 'image2.png' with the actual path to your image -->
     <img src="image2.png" alt="Other Image" id="playMusic">
-    
-    <!-- Countdown timer -->
-    <div class="countdown" id="countdown"></div>
   </div>
 
   <!-- Date and time overlay -->
@@ -75,14 +64,19 @@
   </audio>
 
   <script>
+    // Get the audio element by its ID
     const audio = document.getElementById('backgroundMusic');
+
+    // Array containing paths to your audio files
     const audioFiles = ["audio1.mp3", "audio2.mp3"];
 
+    // Function to pick a random audio file
     function getRandomAudio() {
       const randomIndex = Math.floor(Math.random() * audioFiles.length);
       return audioFiles[randomIndex];
     }
 
+    // Function to play audio
     function playRandomAudio() {
       const randomAudio = getRandomAudio();
       audio.src = randomAudio;
@@ -90,34 +84,31 @@
       audio.play();
     }
 
+    // Play a random audio file initially
     playRandomAudio();
 
+    // Play a random audio file when the current one ends
     audio.addEventListener('ended', function() {
       playRandomAudio();
     });
 
-    function christmasCountdown() {
-      const now = new Date();
-      const christmasDate = new Date(now.getFullYear(), 11, 25); // December month is 11 (0-indexed)
-      const timeDiff = christmasDate - now;
-      const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+    // Play audio when the image is clicked
+    const playMusicImage = document.getElementById('playMusic');
+    playMusicImage.addEventListener('click', function() {
+      audio.play();
+    });
 
-      document.getElementById("countdown").innerHTML = `Christmas Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-    }
-
-    setInterval(christmasCountdown, 1000);
-
+    // Display date and time
     function displayDateTime() {
       const now = new Date();
       const dateTime = now.toLocaleString('en-UK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
       document.getElementById('date-time').textContent = dateTime;
     }
 
+    // Update date and time every second
     setInterval(displayDateTime, 1000);
 
+    // Disable the context menu on right-click (to prevent pausing on some browsers)
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
