@@ -71,23 +71,19 @@
   <!-- Replace 'audio1.mp3' and 'audio2.mp3' with the actual paths to your audio files -->
   <audio autoplay loop id="backgroundMusic">
     <source src="audio1.mp3" type="audio/mpeg">
+    <source src="audio2.mp3" type="audio/mpeg">
     Your browser does not support the audio element.
   </audio>
 
   <script>
-    // Get the audio element by its ID
     const audio = document.getElementById('backgroundMusic');
-
-    // Array containing paths to your audio files
     const audioFiles = ["audio1.mp3", "audio2.mp3"];
 
-    // Function to pick a random audio file
     function getRandomAudio() {
       const randomIndex = Math.floor(Math.random() * audioFiles.length);
       return audioFiles[randomIndex];
     }
 
-    // Function to play audio
     function playRandomAudio() {
       const randomAudio = getRandomAudio();
       audio.src = randomAudio;
@@ -95,46 +91,34 @@
       audio.play();
     }
 
-    // Play a random audio file initially
     playRandomAudio();
 
-    // Play a random audio file when the current one ends
     audio.addEventListener('ended', function() {
       playRandomAudio();
     });
 
-    // Function to calculate Christmas countdown
     function christmasCountdown() {
       const now = new Date();
       const christmasDate = new Date(now.getFullYear(), 11, 25); // December month is 11 (0-indexed)
-      
-      // Calculate time difference in milliseconds
       const timeDiff = christmasDate - now;
-
-      // Convert milliseconds to days, hours, minutes, seconds
       const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-      // Display countdown
       document.getElementById("countdown").innerHTML = `Christmas Countdown: ${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    // Update countdown every second
     setInterval(christmasCountdown, 1000);
 
-    // Display date and time
     function displayDateTime() {
       const now = new Date();
       const dateTime = now.toLocaleString('en-UK', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
       document.getElementById('date-time').textContent = dateTime;
     }
 
-    // Update date and time every second
     setInterval(displayDateTime, 1000);
 
-    // Disable the context menu on right-click (to prevent pausing on some browsers)
     document.addEventListener('contextmenu', function(e) {
       e.preventDefault();
     });
